@@ -1,25 +1,11 @@
-// Configuration and some usefull methods
+var casper = require('casper').create({
+     clientScripts: ["jquery-1.12.4.min.js"]
+});
 
-/**
- * Debug/Verbose
- * ----------------------------------------------------------------------------
- */
-var debug_mode = !!casper.cli.get('verbose');
-if (debug_mode) {
-    debug_mode = true;
-    casper.options.verbose = true;
-    casper.options.logLevel = 'debug';
-}
+var product_url = 'magento2.local/checkout/cart';
+casper.start().thenOpen(product_url, function() {
+    console.log("Step 1");
+    this.capture('step1.png');
+});
 
-var colorizer = require('colorizer').create('Colorizer');
-
-/**
- * The view
- * ----------------------------------------------------------------------------
- */
-
-// The viewport size
-casper.options.viewportSize = {
-    width: 1200,
-    height: 900
-};
+casper.run();
