@@ -3,7 +3,7 @@ var casper = require('casper').create({
 });
 
 //First step is to open site
-var product_url = 'http://lotte.local/checkout/cart/';
+var product_url = 'http://magento2.local/checkout/cart/';
 casper.start().thenOpen(product_url, function() {
     console.log("Website opened");
     this.capture('AfterOpen.png');
